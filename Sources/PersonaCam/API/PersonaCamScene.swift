@@ -32,3 +32,27 @@ public struct PersonaCamScene: SwiftUI.Scene {
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
     }
 }
+
+extension View {
+    /// Auto-opens `PersonaCamScene` when this view first appears.
+    /// Pair with a `PersonaCamScene(position:size:)` declaration in your `App.body`.
+    public func openPersonaCamOnAppear(id: String = PersonaCamScene.defaultID) -> some View {
+        modifier(OpenPersonaCamOnAppearModifier(id: id))
+    }
+}
+
+@MainActor
+private struct OpenPersonaCamOnAppearModifier: ViewModifier {
+    let id: String
+
+    @Environment(\.openImmersiveSpace) private var openImmersiveSpace
+    @State private var hasOpened = false
+
+    func body(content: Content) -> some View {
+        content.task {
+            guard !hasOpened else { return }
+            hasOpened = true
+            _ = await openImmersiveSpace(id: id)
+        }
+    }
+}
