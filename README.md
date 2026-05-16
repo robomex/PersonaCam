@@ -73,7 +73,7 @@ Both calls are required — `RealityView` separates its `make:` and `attachments
 
 ### Path B: let PersonaCam own the immersive space
 
-If your app is windows-only, declare `PersonaCamScene` in your `App.body` and open it from a window:
+If your app is windows-only, declare `PersonaCamScene` in your `App.body` and attach `.openPersonaCamOnAppear()` to your window's root view:
 
 ```swift
 import PersonaCam
@@ -84,23 +84,16 @@ struct MyApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .openPersonaCamOnAppear()
         }
         PersonaCamScene(position: .bottomCenter, size: .regular)
     }
 }
-
-struct ContentView: View {
-    @Environment(\.openImmersiveSpace) private var openImmersiveSpace
-
-    var body: some View {
-        Button("Show PersonaCam") {
-            Task { await openImmersiveSpace(id: PersonaCamScene.defaultID) }
-        }
-    }
-}
 ```
 
-`PersonaCamScene` is a complete SwiftUI `Scene` — it owns the `ImmersiveSpace`, the `RealityView`, and the attachment, so you configure it once.
+Two lines, both in `App.body`. The panel appears automatically when the app launches — no button, no immersive-space state to manage.
+
+`PersonaCamScene` owns the `ImmersiveSpace`, `RealityView`, and attachment. `.openPersonaCamOnAppear()` triggers `openImmersiveSpace` from your view context once on first appearance.
 
 > visionOS permits one immersive space across all apps at a time. If you later add your own immersive content, switch to Path A.
 
