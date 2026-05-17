@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "PersonaCam",
     platforms: [
-        .visionOS(.v2)
+        .visionOS("2.1")
     ],
     products: [
         .library(name: "PersonaCam",
