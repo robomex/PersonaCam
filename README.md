@@ -2,21 +2,7 @@
 
 A SwiftUI/RealityKit package that floats your Persona in a head-anchored corner of the field of view on visionOS — for recording demo videos with a face cam without leaving the headset.
 
-<!--
-  DEMO VIDEO — replace the src below with a GitHub user-attachments URL:
-    1. Open a draft issue on this repo (don't post it)
-    2. Drag your .mp4 / .mov into the description
-    3. GitHub uploads to its CDN and returns a URL like
-       https://github.com/user-attachments/assets/<uuid>
-    4. Paste that URL into the src= below
-    5. Discard the draft issue — the URL stays live
--->
-
-<video src="https://github.com/user-attachments/assets/REPLACE-WITH-UPLOADED-VIDEO-UUID"
-       autoplay muted loop playsinline controls
-       width="720">
-  Your browser does not support embedded video — see the demo clip in the repo.
-</video>
+![PersonaCam demo](https://github.com/user-attachments/assets/39028e59-a362-4435-a2c5-6c52073d3bfb)
 
 > visionOS only. The Apple Vision Pro **simulator does not render a Persona**; final visual verification requires the device.
 
