@@ -8,7 +8,7 @@ A Swift package that floats your Persona in a corner of your field of view on vi
 
 ## Installation
 
-In XCode: **File → Add Package Dependencies…** → paste `https://github.com/robomex/PersonaCam` → "Up to Next Major Version" from `0.2.1`
+In Xcode: **File → Add Package Dependencies…** → paste `https://github.com/robomex/PersonaCam` → "Up to Next Major Version" from `0.2.1`
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ In XCode: **File → Add Package Dependencies…** → paste `https://github.com
 
 ```xml
 <key>NSCameraUsageDescription</key>
-<string>Records your Persona for a face-cam overlay in demo videos.</string>
+<string>Records your Persona for a facecam overlay in demo videos.</string>
 ```
 
 ## Integration
@@ -25,8 +25,8 @@ PersonaCam offers two integration paths, depending on your app structure:
 
 | If your app... | Use |
 |---|---|
-| Has an `ImmersiveSpace` with a `RealityView` | [**Path A**](#path-a-add-to-an-existing-realityview) |
-| Is windows-only | [**Path B**](#path-b-let-personacam-own-the-immersive-space) |
+| Uses an `ImmersiveSpace` with a `RealityView` | [**Path A**](#path-a-add-to-an-existing-realityview) |
+| Does **not** use an `ImmersiveSpace` | [**Path B**](#path-b-let-personacam-own-the-immersive-space) |
 
 ### Path A: add to an existing RealityView
 
@@ -93,13 +93,13 @@ struct MyApp: App {
 
 ## Recording demos
 
-Use visionOS's built-in **Record My View** (Control Center → recording button) to capture your view as a video. 
+Use visionOS's built-in **Record My View** (Control Center → Record My View) to capture your view as a video. 
 
 Reality Composer Pro's **Developer Capture** is another option.
 
 ## Limitations and Pitfalls
 
-- The virtual camera always faces "from" the primary `WindowGroup`. If you walk past the primary `WindowGroup`, the camera will aim towards the nonexistent back of your Persona's head. A potential (untested) remedy is the `Window Follow Mode` enterprise API.
+- The virtual camera always faces "from" the primary `WindowGroup`. If you walk past the primary `WindowGroup`, the camera will aim towards the nonexistent back of your Persona's head. A potential (untested) remedy is utilizing the `Window Follow Mode` enterprise API to always keep the primary `WindowGroup` in front of you.
 
 ## License
 
